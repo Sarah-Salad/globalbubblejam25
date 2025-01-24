@@ -263,8 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07595c673c1324ee5b6352bbb46a40a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bubblePrefab: {fileID: 7533040383458298669, guid: 003e74fc4daa84707a00add4c63469b3, type: 3}
-  _bubbleSpeed: 5
+  bubblePrefab: {fileID: 7533040383458298669, guid: 003e74fc4daa84707a00add4c63469b3, type: 3}
+  bubbleSpeed: 5
 --- !u!114 &565293497
 MonoBehaviour:
   m_ObjectHideFlags: 0
