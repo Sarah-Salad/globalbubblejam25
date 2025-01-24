@@ -11,7 +11,7 @@ public class PlayerBlowBubble : MonoBehaviour
         GameObject bubble = Instantiate(bubblePrefab, transform.position, transform.rotation);
         Rigidbody2D rigidbody = bubble.GetComponent<Rigidbody2D>();
 
-        rigidbody.linearVelocity = new Vector2(0f, bubbleSpeed);
+        rigidbody.linearVelocity = bubbleSpeed * transform.up;
     }
 
     private void OnAttack(InputValue inputValue)
