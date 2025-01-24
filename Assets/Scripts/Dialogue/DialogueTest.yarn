@@ -1,5 +1,26 @@
-﻿title: DialogueTest
-tags:
----
+﻿title: DialougeTest
 
+position: -218,-523
+---
+<<declare $randomIndex = 0>>
+<<set $randomIndex to dice(2)>>
+
+<<if $randomIndex == 1>>
+    <<jump Dialouge1>>
+<<elseif $randomIndex == 2>>
+    <<jump Dialouge2>>
+<<endif>>
+===
+
+title: Dialouge1
+
+position: -214,-179
+---
+Player: Hey, you chose Node 1!
+===
+title: Dialouge2
+
+position: 28,-204
+---
+Player: Hey, you chose Node 2!
 ===
