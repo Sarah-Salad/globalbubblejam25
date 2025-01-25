@@ -1,17 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    public float normalMoveSpeed;
+    public float dashSpeed;
+    public float dashLength = .5f, dashCooldown = 1f;
     public float rotationSpeed;
+    private float _dashCounter;
+    private float _dashCooldownCounter;
+    private float _swimSpeed;
     private Rigidbody2D _rigidbody2d;
     private Vector2 _moveInput;
     private Vector2 _moveInputSmoothed;
     private Vector2 _moveInputVelocity;
-
+    private bool _isDashing = false;
     void Start()
     {
+        _swimSpeed = normalMoveSpeed;
         _rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
@@ -19,7 +26,12 @@ public class PlayerMovement : MonoBehaviour
     {
         SetPlayerVelocity();
         RotatePlayer();
+        if (_isDashing == true)
+        {
+            Dash();
+        }
     }
+
 
     private void SetPlayerVelocity()
     {
@@ -29,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
                     ref _moveInputVelocity,
                     0.1f);
 
-        _rigidbody2d.linearVelocity = _moveInputSmoothed * moveSpeed;
+        _rigidbody2d.linearVelocity = _moveInputSmoothed * _swimSpeed;
     }
     private void RotatePlayer()
     {
@@ -45,5 +57,36 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputValue inputValue)
     {
         _moveInput = inputValue.Get<Vector2>();
+    }
+
+    private void OnSprint(InputValue inputValue)
+    {
+        _isDashing = true;
+    }
+
+    private void Dash()
+    {
+        if (_dashCooldownCounter <= 0 && _dashCounter <= 0)
+        {
+            _swimSpeed = dashSpeed;
+            _dashCounter = dashLength;
+        }
+
+        if (_dashCounter > 0) 
+        {
+            _dashCounter -= Time.deltaTime;
+
+            if (_dashCounter <= 0)
+            {
+                _swimSpeed = normalMoveSpeed;
+                _dashCooldownCounter = dashCooldown;
+                _isDashing = false;
+            }
+        }
+
+        if (_dashCooldownCounter > 0)
+        {
+            _dashCooldownCounter -= Time.deltaTime;
+        }
     }
 }
