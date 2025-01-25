@@ -1,4 +1,4 @@
-﻿title: DialougeTest
+﻿title: DialogueTest
 
 position: -218,-523
 ---
@@ -6,21 +6,27 @@ position: -218,-523
 <<set $randomIndex to dice(2)>>
 
 <<if $randomIndex == 1>>
-    <<jump Dialouge1>>
+    <<jump Dialogue1>>
 <<elseif $randomIndex == 2>>
-    <<jump Dialouge2>>
+    <<jump Dialogue2>>
 <<endif>>
 ===
 
-title: Dialouge1
+title: Dialogue1
 
 position: -214,-179
 ---
 Player: Hey, you chose Node 1!
+Abductee: Do you love me?
+-> Player: Yes
+-> Player: No 
 ===
-title: Dialouge2
+title: Dialogue2
 
 position: 28,-204
 ---
 Player: Hey, you chose Node 2!
+Abductee: Do you hate me?
+-> Player: Yes
+-> Player: No
 ===
