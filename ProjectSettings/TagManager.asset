@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Swimmer
+  - TimerContainer
+  - Bubble
+  - Timer
   layers:
   - Default
   - TransparentFX
