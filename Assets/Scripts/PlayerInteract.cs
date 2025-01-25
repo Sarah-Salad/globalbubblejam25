@@ -26,7 +26,7 @@ public class PlayerInteract : MonoBehaviour
     {
         Debug.Log("Interact");
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 2f, abducteeLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 2.5f, abducteeLayer);
 
         if (!hit) return;
 
