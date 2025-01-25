@@ -6,9 +6,6 @@ public class Bubble : MonoBehaviour
     {
         if (collider.gameObject.tag != "Player") {
             Destroy(gameObject);
-            if (collider.gameObject.tag == "Swimmer") {
-                Destroy(collider.gameObject);
-            }
         }
     }
 }
