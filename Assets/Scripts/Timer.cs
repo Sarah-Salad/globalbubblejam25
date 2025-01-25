@@ -2,9 +2,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEditor;
 
 public class Timer : MonoBehaviour
 {
+    public GameObject sourceSwimmer;
     RectTransform rTransform;
     float timerWidth;
     float timerHeight;
