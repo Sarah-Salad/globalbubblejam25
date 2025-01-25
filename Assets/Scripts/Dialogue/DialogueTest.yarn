@@ -2,9 +2,9 @@
 
 position: -218,-523
 ---
+<<Act Player waterdemon left center white>>
 <<declare $randomIndex = 0>>
 <<set $randomIndex to dice(2)>>
-
 <<if $randomIndex == 1>>
     <<jump Dialogue1>>
 <<elseif $randomIndex == 2>>
@@ -14,10 +14,12 @@ position: -218,-523
 
 title: Dialogue1
 
-position: -214,-179
+position: -298,-208
 ---
+
 Player: Hey, you chose Node 1!
 Abductee: Do you love me?
+
 -> Player: Yes
 -> Player: No 
 ===
