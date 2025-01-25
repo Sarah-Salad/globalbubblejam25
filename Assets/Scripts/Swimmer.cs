@@ -3,6 +3,7 @@ using UnityEngine;
 public class Swimmer : MonoBehaviour
 {
     public GameObject timerPrefab;
+    public double desiredTimerValue = 120f;
     private GameObject timerInstance;
     private GameObject canvasObject;
 
@@ -33,5 +34,6 @@ public class Swimmer : MonoBehaviour
         timerInstance = Instantiate(timerPrefab);
         timerInstance.transform.SetParent(canvasObject.transform);
         timerInstance.GetComponent<Timer>().sourceSwimmer = this.gameObject;
+        timerInstance.GetComponent<Timer>().timerValue = desiredTimerValue;
     }
 }

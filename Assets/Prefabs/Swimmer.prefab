@@ -148,3 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerPrefab: {fileID: 4463780709339774600, guid: 867d01823373699b5af49624a8422688, type: 3}
+  desiredTimerValue: 120
