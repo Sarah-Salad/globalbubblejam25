@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mall_tilest_0: 8662487315818197854
+      mall_tilest_1: -6222717590830688880
+      mall_tilest_2: -4705969918289209441
+      mall_tilest_3: -2113696822095807621
+      mall_tilest_4: 3207146537218563130
+      mall_tilest_5: 7131672382144980352
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
