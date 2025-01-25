@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashLength = .5f, dashCooldown = 1f;
     public float rotationSpeed;
-    public float dashTime;
     private float _dashCounter;
     private float _dashCooldownCounter;
     private float _swimSpeed;
