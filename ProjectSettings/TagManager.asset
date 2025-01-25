@@ -9,6 +9,8 @@ TagManager:
   - TimerContainer
   - Bubble
   - Timer
+  - WaypointContainer
+  - Waypoint
   layers:
   - Default
   - TransparentFX
