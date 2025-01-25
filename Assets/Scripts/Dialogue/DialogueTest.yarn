@@ -2,7 +2,8 @@
 
 position: -218,-523
 ---
-<<Act Player waterdemon left center white>>
+<<Act Player player left center white>>
+<<Act WaterDemon waterdemon left center white>>
 <<declare $randomIndex = 0>>
 <<set $randomIndex to dice(2)>>
 <<if $randomIndex == 1>>
@@ -18,17 +19,19 @@ position: -298,-208
 ---
 
 Player: Hey, you chose Node 1!
-Abductee: Do you love me?
+WaterDemon: Do you love me?
 
 -> Player: Yes
 -> Player: No 
+<<HideAll>>
 ===
 title: Dialogue2
 
 position: 28,-204
 ---
 Player: Hey, you chose Node 2!
-Abductee: Do you hate me?
+WaterDemon: Do you hate me?
 -> Player: Yes
 -> Player: No
+<<HideAll>>
 ===
