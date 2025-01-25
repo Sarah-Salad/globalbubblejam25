@@ -2,9 +2,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEditor;
 
 public class Timer : MonoBehaviour
 {
+    public GameObject sourceSwimmer;
+    public double timerValue;
     RectTransform rTransform;
     float timerWidth;
     float timerHeight;
@@ -13,9 +16,13 @@ public class Timer : MonoBehaviour
     float xPos;
     float yPos;
     float lowestYPos;
+    bool isTimerFinished = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Set up initial value of timer into the TMP Pro text field
+        setTimerText();
+
         // Set up of vars assuming this timer is at the top right of the screen with the correct offset given the size of the TMP GameObject
         rTransform = this.GetComponent<RectTransform>();
         timerWidth = rTransform.rect.size.x;
@@ -42,18 +49,46 @@ public class Timer : MonoBehaviour
         if (timerList.Length > 1) {
             lowestYPos = timerList.Aggregate(
             0.0f, (min, timerObject) => Math.Min(min, timerObject.GetComponent<RectTransform>().anchoredPosition.y));
+            //Debug.Log($"Lowest Timer Y Pos: {lowestYPos}");
 
-        //Debug.Log($"Lowest Timer Y Pos: {lowestYPos}");
-
-        // Set the position of the timer accordingly
-        Vector2 dest = new Vector2(xPos, lowestYPos - timerHeight);
-        rTransform.anchoredPosition = dest;
-        } 
+            // Set the position of the timer accordingly
+            Vector2 dest = new Vector2(xPos, lowestYPos - timerHeight);
+            rTransform.anchoredPosition = dest;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Check if timer finished
+        if (!isTimerFinished) {
+            decrementTimer();
+            setTimerText();
+            // Check if timer value is at or below 0, set text to 0, perform finish timer actions, and set timer finished flag true
+            if (timerValue <= 0.0f) {
+                zeroTimer();
+                handleFinishedTimer();
+                isTimerFinished = true;
+            }
+        }
+    }
+    void setTimerText() {
+        // Convert current timer number to text string
+        string timerText = timerValue.ToString("F2");
+        // Update TMP component with new text
+        this.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = timerText;
+    }
+
+    void zeroTimer() {
+        // Update TMP component with new text
+        this.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0.00";
+    }
+
+    void decrementTimer() {
+        timerValue -= Time.deltaTime;
+    }
+
+    void handleFinishedTimer() {
+        Debug.Log("Timer hit 0");
     }
 }
