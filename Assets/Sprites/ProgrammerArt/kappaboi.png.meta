@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kappaboi_0: 4566896000575523250
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
