@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Abductee
   - Swimmer
+  - TimerContainer
+  - Bubble
+  - Timer
   layers:
   - Default
   - TransparentFX
