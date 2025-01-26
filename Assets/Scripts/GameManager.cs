@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
 {
     public int surfaceSceneIndex;
     public int mallSceneIndex;
+    public int winSceneIndex;
+    public int loseSceneIndex;
     public bool inMall;
     private bool _doneInitialLoad;
     private List<Abductee> _abductees;
@@ -122,6 +124,16 @@ public class GameManager : MonoBehaviour
             
             inMall = true;
         });
+    }
+
+    public void TransitionToWinScene()
+    {
+        SceneManager.LoadSceneAsync(winSceneIndex);
+    }
+
+    public void TransitionToLoseScene()
+    {
+        SceneManager.LoadSceneAsync(loseSceneIndex);
     }
 
     private void spawnAbducteeAtOpenWaypoint(Abductee abductee) {
