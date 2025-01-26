@@ -36,7 +36,6 @@ public class MusicScript : MonoBehaviour
 
     public void StopMusic()
     {
-        Debug.Log("stog music");
         if (isPlayingFishMusic == true)
         {
             fishMusic.Stop();
@@ -49,8 +48,7 @@ public class MusicScript : MonoBehaviour
 
     public void OnSceneChanged(Scene previousScene, Scene newScene)
     {
-        Debug.Log("Scene changed");
-        if (previousScene.name != newScene.name) 
+]        if (previousScene.name != newScene.name) 
         {
             if (((IList)fishMusicScenes).Contains(newScene.name) && isPlayingFishMusic == false)
             {
