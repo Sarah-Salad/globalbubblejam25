@@ -13,7 +13,6 @@ public class GameState : MonoBehaviour
     {
         _dialogueRunner.onDialogueComplete.AddListener(EndConversation);
     }
-
     void Update()
     {
         if (souls >= 9)
