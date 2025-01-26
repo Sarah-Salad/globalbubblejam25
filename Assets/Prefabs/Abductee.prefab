@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5463088485041286246}
   - component: {fileID: 5341506763611223445}
   - component: {fileID: 1705074647195787348}
-  - component: {fileID: 6416999350697331776}
+  - component: {fileID: 426955720518646743}
   m_Layer: 6
   m_Name: Abductee
   m_TagString: Abductee
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1.3
---- !u!114 &6416999350697331776
+--- !u!114 &426955720518646743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 865018384215404664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc40026ad830553787e7b40aad00380, type: 3}
+  m_Script: {fileID: 11500000, guid: bb6fb992dbff64d6c8476aeff45dd1ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _stopInteract:
@@ -143,15 +143,15 @@ MonoBehaviour:
   _onInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
-        m_TargetAssemblyTypeName: Yarn.Unity.DialogueRunner, YarnSpinner.Unity
-        m_MethodName: StartDialogue
-        m_Mode: 5
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: DialogueTest
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
