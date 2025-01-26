@@ -6,21 +6,24 @@ using Yarn.Unity;
 using Random = UnityEngine.Random;
 
 /**
- * Record to pair up the names and mall spawn loactions
+ * Record to pair up Swimmer instance, timer instance, and
+ * abductee instance
  */
 public record Abductee
 {
-    public string Name { get; }
-    public Vector2 MallSpawnLocation { get; }
+    public GameObject swimmerReference;
+    public GameObject associatedTimer;
+    public GameObject abducteeInstance;
 
-    public Abductee(string name, Vector2 mallSpawnLocation)
-    {
-        Name = name;
-        MallSpawnLocation = mallSpawnLocation;
+    public Abductee(GameObject swimmer, GameObject timer) {
+        swimmerReference = swimmer;
+        associatedTimer = timer;
+        abducteeInstance = null;
     }
 }
 
 /**
+ * TODO: Update comment to reflect new logic
  * General idea: This game manager holds the locations for active abductees,
  * and handles scene transitions. It's expected this GM is in the hierarchy,
  * lest abductees won't spawn. Swimmers should be placed in the MainScene
@@ -52,8 +55,6 @@ public class GameManager : MonoBehaviour
     public int mallSceneIndex;
     public bool inMall;
     private bool _doneInitialLoad;
-
-    public List<Vector2> abducteeWaypoints;
     private List<Abductee> _abductees;
     
     public GameObject abducteePrefab;
@@ -66,36 +67,22 @@ public class GameManager : MonoBehaviour
         _doneInitialLoad = true;
     }
 
-    public void AddAbductee(string abducteeName)
+    public void AddAbductee(GameObject swimmer, GameObject timer)
     {
-        // Don't reuse spawn locations already in use by another abductee
-        List<Vector2> availableWaypoints = abducteeWaypoints.FindAll(waypoint => 
-            !_abductees.Any(abductee => abductee.MallSpawnLocation.Equals(waypoint))
-        );
 
-        if (availableWaypoints.Count == 0)
-        {
-            Debug.LogWarning("There are no available waypoints");
-            return;
-        }
-        
-        Vector2 spawnLocation = availableWaypoints[Random.Range(0, availableWaypoints.Count)];
-        _abductees.Add(new Abductee(abducteeName, spawnLocation));
-        Debug.Log($"Added abductee {abducteeName} to location {spawnLocation} in mall");
+        _abductees.Add(new Abductee(swimmer, timer));
+        Debug.Log($"Queued abductee to spawn in mall");
     }
 
-    public void RemoveAbductee(string abducteeName)
-    {
-        _abductees.RemoveAll(x => x.Name == abducteeName);
-
-        if (inMall)
-        {
-            Destroy(GameObject.Find(abducteeName));
+    public void RemoveAbducteeViaTimer(GameObject myTimer) {
+        // https://stackoverflow.com/a/27851493
+        foreach (Abductee abductee in _abductees.ToList()) {
+            if (abductee.associatedTimer == myTimer) {
+                Destroy(abductee.associatedTimer.gameObject);
+                Destroy(abductee.abducteeInstance);
+                _abductees.Remove(abductee);
+            }
         }
-        
-        // Todo respawn swimmer on surface when timer is up
-        
-        Debug.Log($"Abductee {abducteeName} from mall");
     }
 
     public void TransitionToSurface()
@@ -112,7 +99,8 @@ public class GameManager : MonoBehaviour
 
             foreach (Swimmer swimmer in swimmers)
             {
-                if (_abductees.Find(abdcte => abdcte.Name == swimmer.name) != null)
+                // If our originating swimmer is still on the surface then delete their gameobject
+                if (_abductees.Find(abdcte => abdcte.swimmerReference == swimmer.gameObject) != null)
                 {
                     Destroy(swimmer.gameObject);
                 }
@@ -129,13 +117,26 @@ public class GameManager : MonoBehaviour
         {
             foreach (Abductee abductee in _abductees)
             {
-                Transform parent = GameObject.Find("AbducteesGoHere").transform;
-                GameObject abducteeObj = Instantiate(abducteePrefab, parent);
-                abducteeObj.transform.position = abductee.MallSpawnLocation;
-                abducteeObj.name = abductee.Name;
+                spawnAbducteeAtOpenWaypoint(abductee);
             }
             
             inMall = true;
         });
+    }
+
+    private void spawnAbducteeAtOpenWaypoint(Abductee abductee) {
+        // Find open waypoint
+        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+        GameObject[] openWaypoints = waypoints.Where(waypoint => waypoint.GetComponent<Waypoint>().isOpen()).ToArray();
+        //Vector2[] openWaypointCoords = openWaypoints.Select(
+        //    waypoint => new Vector2(waypoint.transform.position.x, waypoint.transform.position.x)).ToArray();
+        GameObject destWaypoint = openWaypoints[UnityEngine.Random.Range(0, openWaypoints.Length - 1)];
+        Vector2 destWaypointCoords = new Vector2(destWaypoint.transform.position.x, destWaypoint.transform.position.y);
+        // Spawn abudctee at waypoint and spawn in the correct location
+        abductee.abducteeInstance = Instantiate(abducteePrefab);
+        abductee.abducteeInstance.transform.SetParent(destWaypoint.transform);
+        abductee.abducteeInstance.transform.position = destWaypointCoords;
+        // tie it to the waypoint object so it will be considered inhabited next go around
+        destWaypoint.GetComponent<Waypoint>().inhabitedBy = abductee.abducteeInstance;
     }
 }

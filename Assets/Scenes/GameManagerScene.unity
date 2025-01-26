@@ -152,12 +152,6 @@ MonoBehaviour:
   surfaceSceneIndex: 1
   mallSceneIndex: 2
   inMall: 0
-  abducteeWaypoints:
-  - {x: -20, y: -2}
-  - {x: -30, y: -10}
-  - {x: 20, y: 10}
-  - {x: 10, y: 10}
-  - {x: 5, y: 5}
   abducteePrefab: {fileID: 865018384215404664, guid: 3c1700c7cb7c743d59745eed765ea8e9, type: 3}
 --- !u!4 &1165480428
 Transform:
@@ -168,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 1165480426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5476074, y: -9.298247, z: -1.5753821}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

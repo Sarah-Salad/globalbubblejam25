@@ -92,6 +92,6 @@ public class Timer : MonoBehaviour
     void handleFinishedTimer() {
         Debug.Log("Timer hit 0");
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gm.RemoveAbductee(swimmerName);
+        gm.RemoveAbducteeViaTimer(this.gameObject);
     }
 }
