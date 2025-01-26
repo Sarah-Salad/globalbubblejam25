@@ -12,8 +12,7 @@ position: -218,-523
 ===
 
 title: Dialogue1
-
-position: -298,-208
+position: -257,-208
 ---
 
 Player: Hey, you chose Node 1!
@@ -63,5 +62,60 @@ Kappa: Hey, you kind of scare me, what do you want?
 Player: What should I say?
 -> Player: I love you
 -> Player: I hate you
+<<HideAll>>
+===
+title: WaterDemon2
+position: -371,-53
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Did you just trap me in a bubble? Why would you do that?
+Player: What should I say?
+-> Player: I was lonely and wanted a friend
+    <<jump WaterDemon2_1>>
+-> Player: I thought you were cute and I wanted to talk to you
+    <<jump WaterDemon2_2>>
+-> Player: It was an accident, but at least now I get to talk to you!
+    <<jump WaterDemon2_3>>
+===
+title: WaterDemon2_1
+position: -379,173
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Hmm, interesting. Do you kidnap all of your friends?
+Player: What should I say?
+-> Player: Yes
+    Water Demon: Ah. Understandable. I've considered doing the same myself.
+-> Player: Only the cute ones
+    Water Demon: Huh? If you say so.
+<<HideAll>>
+===
+
+
+title: WaterDemon2_2
+position: 4,2
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Oh. I guess you're not bad on the eyes yourself.
+Player: What should I say?
+-> Player: So, you wanna join me or what?
+    Water Demon: Okay, sure.
+-> Player: You look like a blueberry, plucked fresh from the ocean.
+    Water Demon: That's a weird thing to say.
+<<HideAll>>
+===
+title: WaterDemon2_3
+position: -6,183
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Hm. You need to work on your aim then.
+Player: What should I say?
+-> Player: This is surely fate. You should stay with me.
+    Water Demon: Okay, I guess so.
+-> Player: I have to be honest, I actually did mean to capture you.
+    Water Demon: Oh. So you lied to me? I don't think I wanna hang out you.
 <<HideAll>>
 ===
