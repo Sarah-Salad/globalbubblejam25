@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using Yarn.Unity;
@@ -34,6 +33,7 @@ public class InteractableObject: MonoBehaviour, IInteractable
     private void ConversationEnd()
     {
         playerMovement.enabled = true;
+        gameObject.SetActive(false); 
     }
 
     private void ConversationStart()

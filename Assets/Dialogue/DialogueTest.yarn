@@ -36,8 +36,6 @@ position: -248,-129
 ---
 <<declare $Souls = 0>>
 <<declare $Loss = 0>>
-<<Act Player player left center white>>
-Player: I'm ready to make some friends!
 <<HideAll>>
 ===
 
