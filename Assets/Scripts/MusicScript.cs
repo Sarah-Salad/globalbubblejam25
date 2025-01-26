@@ -48,7 +48,7 @@ public class MusicScript : MonoBehaviour
 
     public void OnSceneChanged(Scene previousScene, Scene newScene)
     {
-]        if (previousScene.name != newScene.name) 
+        if (previousScene.name != newScene.name) 
         {
             if (((IList)fishMusicScenes).Contains(newScene.name) && isPlayingFishMusic == false)
             {
