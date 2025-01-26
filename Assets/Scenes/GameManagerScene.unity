@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde1a06fbe0c8749b814da876cc639d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaceSceneIndex: 1
-  mallSceneIndex: 2
+  surfaceSceneIndex: 3
+  mallSceneIndex: 4
   inMall: 0
   abducteePrefab: {fileID: 865018384215404664, guid: 3c1700c7cb7c743d59745eed765ea8e9, type: 3}
 --- !u!4 &1165480428
