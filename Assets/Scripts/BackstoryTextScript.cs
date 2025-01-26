@@ -12,6 +12,7 @@ public class BackstoryTextScript : MonoBehaviour
     public string[] textlist;
     public GameObject backgroundImage;
     public Sprite[] sprites;
+    public string sceneToLoad;
     public float textDelay = 0.3f;
     private string current = "";
     private int count = 0;
@@ -42,9 +43,9 @@ public class BackstoryTextScript : MonoBehaviour
         //TODO: This should use the input system
         if (Input.GetButtonDown("Submit"))
         {
-            if (showing && count + 1 == textlist.Length) {
+            if (showing && (count + 1) == textlist.Length) {
                 count++;
-                SceneManager.LoadScene("GameManagerScene");
+                SceneManager.LoadScene(sceneToLoad);
             }
             else if (showing) {
                 showing = false;

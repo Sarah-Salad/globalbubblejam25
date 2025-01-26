@@ -190,7 +190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e71112eadbcce4f4c961d2f105fe3de5, type: 3}
+  m_Sprite: {fileID: 437285419928284403, guid: 3ac7c34fccc3b4639876140dd899c6f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -401,16 +401,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textlist:
-  - Shui liked to look at the water to relax and clear his mind.
-  - One day, Shui slipped and fell into the water. Unfortunately, Shui couldn't swim.
-  - Now cursed in the afterlife to stay in this body of water, Shui is determined
-    to make friends.
+  - Disheartened by his inability to make friends, Shui accepts that he will always
+    be alone.
   backgroundImage: {fileID: 379743324}
   sprites:
-  - {fileID: 21300000, guid: e71112eadbcce4f4c961d2f105fe3de5, type: 3}
-  - {fileID: 21300000, guid: 69645d33b6c4e42e7b5042571c1303da, type: 3}
-  - {fileID: 21300000, guid: 6ae1ac61f1ded4893a5c2758c7b9f417, type: 3}
-  sceneToLoad: GameManagerScene
+  - {fileID: 437285419928284403, guid: 3ac7c34fccc3b4639876140dd899c6f2, type: 3}
+  sceneToLoad: MainMenu
   textDelay: 0.3
 --- !u!114 &683896233
 MonoBehaviour:

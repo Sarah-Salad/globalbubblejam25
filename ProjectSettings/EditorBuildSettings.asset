@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MallScene.unity
     guid: 6c7b6897c634ce91cbb4042cbb8dcedf
+  - enabled: 1
+    path: Assets/Scenes/WinGame.unity
+    guid: d0d964a29e7f34705914e922185109dc
+  - enabled: 1
+    path: Assets/Scenes/LoseGame.unity
+    guid: dd09299de1cab43138bdf8ac1ffa1ff3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3002ad8451a8c4f0d840e138dd52c890, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -14,6 +14,17 @@ public class GameState : MonoBehaviour
         _dialogueRunner.onDialogueComplete.AddListener(EndConversation);
     }
 
+    void Update()
+    {
+        if (souls >= 9)
+        {
+            gameObject.GetComponent<GameManager>().TransitionToWinScene();
+        } else if (loss >= 3) 
+        {
+            gameObject.GetComponent<GameManager>().TransitionToLoseScene();
+        }
+    }
+
     private void EndConversation()
     {
         _storage.TryGetValue("$Souls", out souls);
