@@ -154,7 +154,6 @@ MonoBehaviour:
   dashLength: 0.5
   dashCooldown: 1
   rotationSpeed: 50
-  dashTime: 0
 --- !u!114 &6987737836767667073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +244,7 @@ Animator:
   m_GameObject: {fileID: 6164132166518181492}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 264e5dc73d537459a8a9e9c9ad39d597, type: 2}
+  m_Controller: {fileID: 9100000, guid: 40655ac5a5f596ca9ad44fedb73511c8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

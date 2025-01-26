@@ -4,6 +4,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static readonly int Moving = Animator.StringToHash("Moving");
+    
     public float normalMoveSpeed;
     public float dashSpeed;
     public float dashLength = .5f, dashCooldown = 1f;
@@ -16,10 +18,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveInputSmoothed;
     private Vector2 _moveInputVelocity;
     private bool _isDashing = false;
+    private Animator _animator;
+    
     void Start()
     {
         _swimSpeed = normalMoveSpeed;
         _rigidbody2d = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate() 
@@ -42,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
                     0.1f);
 
         _rigidbody2d.linearVelocity = _moveInputSmoothed * _swimSpeed;
+        _animator.SetBool(Moving, _rigidbody2d.linearVelocity.magnitude > .1f);
     }
     private void RotatePlayer()
     {

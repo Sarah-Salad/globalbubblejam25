@@ -151,6 +151,7 @@ MonoBehaviour:
   surfaceSceneIndex: 1
   mallSceneIndex: 2
   inMall: 0
+  _doneInitialLoad: 0
   abducteeWaypoints:
   - {x: -20, y: -2}
   - {x: -30, y: -10}
