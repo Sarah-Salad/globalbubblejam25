@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
@@ -59,6 +60,9 @@ public class GameManager : MonoBehaviour
     
     public GameObject abducteePrefab;
 
+    public List<RuntimeAnimatorController> abducteeAnimations;
+    public List<Sprite> abducteeSprites;
+    
     private void Start()
     {
         inMall = false;
@@ -136,6 +140,10 @@ public class GameManager : MonoBehaviour
         abductee.abducteeInstance = Instantiate(abducteePrefab);
         abductee.abducteeInstance.transform.SetParent(destWaypoint.transform);
         abductee.abducteeInstance.transform.position = destWaypointCoords;
+        
+        int personalityIndex = Random.Range(0, abducteeAnimations.Count);
+        abductee.abducteeInstance.GetComponent<SpriteRenderer>().sprite = abducteeSprites[personalityIndex];
+        abductee.abducteeInstance.GetComponent<Animator>().runtimeAnimatorController = abducteeAnimations[personalityIndex];
         // tie it to the waypoint object so it will be considered inhabited next go around
         destWaypoint.GetComponent<Waypoint>().inhabitedBy = abductee.abducteeInstance;
     }
