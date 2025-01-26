@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WaterDemonIdle_0: -7808561340321354122
+      WaterDemonIdle_1: 8795033081341592112
+      WaterDemonIdle_2: -7856931591198683718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

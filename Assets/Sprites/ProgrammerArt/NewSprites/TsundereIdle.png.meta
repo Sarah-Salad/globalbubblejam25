@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TsundereIdle_0: -7608670378147432239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

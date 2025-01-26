@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      KappaSwimming_0: -3437702713778952242
+      KappaSwimming_1: -5663069611786244742
+      KappaSwimming_2: -3880630556529030625
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
