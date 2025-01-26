@@ -169,5 +169,8 @@ public class GameManager : MonoBehaviour
         abductee.abducteeInstance.GetComponent<Animator>().runtimeAnimatorController = abducteeAnimations[personalityIndex];
         // tie it to the waypoint object so it will be considered inhabited next go around
         destWaypoint.GetComponent<Waypoint>().inhabitedBy = abductee.abducteeInstance;
+        // set tracking arrow and enable
+        abductee.associatedTimer.GetComponent<Timer>().arrow.SetActive(true);
+        abductee.associatedTimer.GetComponent<Timer>().objectTrackedByArrow = abductee.abducteeInstance;
     }
 }

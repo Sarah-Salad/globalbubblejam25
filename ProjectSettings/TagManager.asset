@@ -11,6 +11,7 @@ TagManager:
   - Timer
   - WaypointContainer
   - Waypoint
+  - Arrow
   layers:
   - Default
   - TransparentFX
