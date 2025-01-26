@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WaterDemonBack_0: -8158806236987023246
+      WaterDemonBack_1: 7135667534894929192
+      WaterDemonBack_2: -6944605535415699933
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

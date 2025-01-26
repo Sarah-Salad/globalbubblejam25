@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TsundereSwimming_0: -8659565175340503349
+      TsundereSwimming_1: -2709195946138706377
+      TsundereSwimming_2: 5641680784220243536
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
