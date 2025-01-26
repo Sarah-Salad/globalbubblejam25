@@ -237,6 +237,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1309,7 +1322,55 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      swim_0: -7702213000804406632
+      swim_1: 8017264963077213015
+      swim_10: -5808275912491248346
+      swim_11: -8767286647885838812
+      swim_12: 1772290108181314323
+      swim_13: 4003125234399635831
+      swim_14: 8460037699990211870
+      swim_15: -5814995143349898062
+      swim_16: 8243824987060844838
+      swim_17: 28639373438734565
+      swim_18: 4508063774249165405
+      swim_19: 7709038368810393010
+      swim_2: 4836728942846734679
+      swim_20: 581243185510028030
+      swim_21: 4771010312245300468
+      swim_22: 2573067630541075586
+      swim_23: -4407416004577744881
+      swim_24: 5944680436537652253
+      swim_25: -8110906379872733797
+      swim_26: -4131306625665281735
+      swim_27: 4728171438455584057
+      swim_28: 5946531526163360505
+      swim_29: -5235812229026342673
+      swim_3: 500643763564438441
+      swim_30: -1938799553391834108
+      swim_31: -1642158811121057256
+      swim_32: 5030854963350994855
+      swim_33: 1791814346651190305
+      swim_34: -2291020221506303873
+      swim_35: 2800706016829287816
+      swim_36: -1508234777443013102
+      swim_37: 350461923660990740
+      swim_38: 4541956754214102462
+      swim_39: -8688260779605003845
+      swim_4: -3051136657195245142
+      swim_40: -4045131573369799540
+      swim_41: 8254156721388263186
+      swim_42: -3977453401773807780
+      swim_43: -537611533422225817
+      swim_44: 6189754845096214960
+      swim_45: 500089696089800616
+      swim_46: -7268229863990715516
+      swim_47: 116836720140686560
+      swim_5: 83846171747895053
+      swim_6: -375056639823140394
+      swim_7: 6165753666253563809
+      swim_8: -4189164417747804549
+      swim_9: 4565211767665310613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
