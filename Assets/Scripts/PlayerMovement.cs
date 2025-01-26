@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using System;
+using System.Drawing.Drawing2D;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,18 +11,29 @@ public class PlayerMovement : MonoBehaviour
     public float accelerationFactor = 3f;
     public float turnFactor = 3.5f;
     public float maxSpeed = 5f;
+    private float originalDriftFactor, originalAccelerationFactor, originalTurnFactor, originalMaxSpeed;
 
     private float accelerationInput = 0;
     private float steeringInput = 0;
     private float rotationAngle = 0;
 
     private float velocityVsUp = 0;
+    public float dashFactor = 2f;
+    public float dashTime = 1f;
+    private bool isDashing = false;
     private Vector2 moveInput;
 
     private Rigidbody2D rigidBody2D;
 
     void Awake() {
         rigidBody2D = this.GetComponent<Rigidbody2D>();
+        // Store copies of values set by default or via inspector so that
+        // once the dash is finished we can reset our values used in
+        // physics calculations
+        originalDriftFactor = driftFactor;
+        originalAccelerationFactor = accelerationFactor;
+        originalTurnFactor = turnFactor;
+        originalMaxSpeed = maxSpeed;
     }
 
     void FixedUpdate() {
@@ -38,13 +50,17 @@ public class PlayerMovement : MonoBehaviour
         steeringInput = moveInput.x;
     }
 
+    private void OnSprint(InputValue inputValue) {
+        Dash();
+    }
+
     void ApplyEngineForce() {
         velocityVsUp = Vector2.Dot(
             transform.up, rigidBody2D.linearVelocity
         );
 
         if (velocityVsUp > maxSpeed && accelerationInput > 0 || accelerationInput < 0) {
-            // don't apply engine force if above max speed or going backwards
+            // don't apply more engine force if above max speed or going backwards
             return;
         }
 
@@ -76,5 +92,31 @@ public class PlayerMovement : MonoBehaviour
         );
 
         rigidBody2D.linearVelocity = forwardVelocity + rightVelocity * driftFactor;
+    }
+
+    void Dash() {
+        if (!isDashing && rigidBody2D.linearVelocity != Vector2.zero) {
+            Debug.Log("Starting dash");
+            isDashing = true;
+            // boost 
+            driftFactor = 0.01f;
+            rigidBody2D.linearVelocity *= dashFactor;
+            turnFactor *= 2;
+            maxSpeed += dashFactor;
+            // cool down before reset vals
+            StartCoroutine(waitDashTime());
+        }
+    }
+
+    IEnumerator waitDashTime() {
+        Debug.Log("Waiting");
+        yield return new WaitForSeconds(dashTime);
+
+        Debug.Log("Resetting vals");
+        isDashing = false;
+        driftFactor = originalDriftFactor;
+        accelerationFactor = originalAccelerationFactor;
+        turnFactor = originalTurnFactor;
+        maxSpeed = originalMaxSpeed;
     }
 }
