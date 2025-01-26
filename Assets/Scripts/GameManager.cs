@@ -95,6 +95,18 @@ public class GameManager : MonoBehaviour
             if (abductee.associatedTimer == myTimer) {
                 Destroy(abductee.associatedTimer.gameObject);
                 Destroy(abductee.abducteeInstance);
+                Destroy(abductee.swimmerReference);
+                _abductees.Remove(abductee);
+            }
+        }
+    }
+
+    public void RemoveAbductee(GameObject myAbductee) {
+        foreach (Abductee abductee in _abductees.ToList()) {
+            if (abductee.abducteeInstance == myAbductee) {
+                Destroy(abductee.associatedTimer.gameObject);
+                Destroy(abductee.abducteeInstance);
+                Destroy(abductee.swimmerReference);
                 _abductees.Remove(abductee);
             }
         }
