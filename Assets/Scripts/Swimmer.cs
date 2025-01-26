@@ -35,5 +35,8 @@ public class Swimmer : MonoBehaviour
         timerInstance.transform.SetParent(canvasObject.transform);
         timerInstance.GetComponent<Timer>().sourceSwimmer = this.gameObject;
         timerInstance.GetComponent<Timer>().timerValue = desiredTimerValue;
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.AddAbductee(name);
+        timerInstance.GetComponent<Timer>().swimmerName = name;
     }
 }
