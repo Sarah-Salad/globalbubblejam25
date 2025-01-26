@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
     public void TransitionToMall()
     {
         GetComponent<HelpTextManager>().HideHelpText();
+        GetComponent<HelpTextManager>().ShowHelpTextMall();
         SceneManager.UnloadSceneAsync(surfaceSceneIndex);
         SceneManager.LoadSceneAsync(mallSceneIndex, LoadSceneMode.Additive).GetAwaiter().OnCompleted(() =>
         {
