@@ -8,11 +8,13 @@ public class Swimmer : MonoBehaviour
     public GameObject timerPrefab;
     private GameObject timerInstance;
     private GameObject canvasObject;
+    private Rigidbody2D rigidBody2D;
     public double desiredTimerValue = 120f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rigidBody2D = this.GetComponent<Rigidbody2D>();
         // Probably a more efficient way to do this other than grabbing the canvas for every swimmer but should be fine for this purpose
         canvasObject = GameObject.Find("Canvas");
     }
@@ -21,6 +23,12 @@ public class Swimmer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void FixedUpdate() {
+        Vector2 randomDirection = new Vector2(
+            UnityEngine.Random.Range(0f,0.2f), UnityEngine.Random.Range(0f,0.2f));
+        rigidBody2D.AddForce(randomDirection);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
