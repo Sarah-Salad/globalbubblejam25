@@ -4,6 +4,7 @@ using Yarn.Unity;
 
 public class InteractableObject: MonoBehaviour, IInteractable
 {
+    private GameObject gameManager;
     private UnityEvent _stopInteract;
     private UnityEvent _onInteract;
     private DialogueRunner dialogueRunner;
@@ -20,6 +21,7 @@ public class InteractableObject: MonoBehaviour, IInteractable
 
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         _onInteract = new UnityEvent();
         _stopInteract = new UnityEvent();
         dialogueRunner = FindAnyObjectByType<DialogueRunner>();
@@ -33,7 +35,7 @@ public class InteractableObject: MonoBehaviour, IInteractable
     private void ConversationEnd()
     {
         playerMovement.enabled = true;
-        gameObject.SetActive(false); 
+        gameManager.GetComponent<GameManager>().RemoveAbductee(this.gameObject);
     }
 
     private void ConversationStart()
