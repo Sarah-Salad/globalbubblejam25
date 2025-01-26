@@ -35,6 +35,7 @@ title: Start
 position: -248,-129
 ---
 <<declare $Souls = 0>>
+<<declare $Loss = 0>>
 ===
 
 title: Shy
@@ -83,6 +84,7 @@ Player: What should I say?
 -> Player: I love you
     <<set $Souls = $Souls + 1>>
 -> Player: I hate you
+    <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
 
@@ -96,6 +98,7 @@ Player: What should I say?
 -> Player: I love you
     <<set $Souls = $Souls + 1>>
 -> Player: I hate you
+    <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
 
@@ -109,6 +112,7 @@ Player: What should I say?
 -> Player: I love you
     <<set $Souls = $Souls + 1>>
 -> Player: I hate you
+    <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
 title: Shy2
@@ -157,6 +161,7 @@ Player: What should I say?
     <<set $Souls = $Souls + 1>>
 -> Player: You look like a blueberry, plucked fresh from the ocean.
     Water Demon: That's a weird thing to say.
+    <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
 title: WaterDemon2_3
@@ -171,6 +176,7 @@ Player: What should I say?
     <<set $Souls = $Souls + 1>>
 -> Player: I have to be honest, I actually did mean to capture you.
     Water Demon: Oh. So you lied to me? I don't think I wanna hang out you.
+    <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
 title: Tsundere2
@@ -185,6 +191,7 @@ Player: What should I say?
     <<set $Souls = $Souls + 1>>
 -> Player: I thought you'd like my natural musk
     Tsundere: Ew.
+    <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
 
@@ -200,5 +207,6 @@ Player: What should I say?
     <<set $Souls = $Souls + 1>>
 -> Player: Demon?? That doesn't sound like me. You're the demon here.
     Kappa: That's Kap. You're untrustworthy.
+    <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
