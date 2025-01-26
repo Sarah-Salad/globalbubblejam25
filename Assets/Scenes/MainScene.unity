@@ -8866,7 +8866,7 @@ PrefabInstance:
     - target: {fileID: 4827067163570013575, guid: 1f14bb443990a412da1c42f72aac12ff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5661733296896965274, guid: 409d32ce83954467d95ebba14cdbb661, type: 3}
+      objectReference: {fileID: -2542612894448620961, guid: 8d06c013319c0428ba5c0608714f57e0, type: 3}
     - target: {fileID: 6164132166518181492, guid: 1f14bb443990a412da1c42f72aac12ff, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8875,10 +8875,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7426813244510438978, guid: 1f14bb443990a412da1c42f72aac12ff, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 264e5dc73d537459a8a9e9c9ad39d597, type: 2}
     - target: {fileID: 8790738456468500230, guid: 1f14bb443990a412da1c42f72aac12ff, type: 3}
       propertyPath: m_Enabled
       value: 1
