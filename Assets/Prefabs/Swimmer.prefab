@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7848925271569589628}
   - component: {fileID: 3746820304550237116}
   - component: {fileID: 9137208590677844586}
+  - component: {fileID: 3950573684563448549}
   m_Layer: 0
   m_Name: Swimmer
   m_TagString: Swimmer
@@ -148,5 +149,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerPrefab: {fileID: 4463780709339774600, guid: 867d01823373699b5af49624a8422688, type: 3}
-  abducteePrefab: {fileID: 865018384215404664, guid: 3c1700c7cb7c743d59745eed765ea8e9, type: 3}
   desiredTimerValue: 120
+--- !u!50 &3950573684563448549
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027609587218460309}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.1
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
