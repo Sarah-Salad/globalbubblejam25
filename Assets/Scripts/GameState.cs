@@ -5,8 +5,8 @@ public class GameState : MonoBehaviour
 {
     [SerializeField] private VariableStorageBehaviour _storage;
     [SerializeField] private DialogueRunner _dialogueRunner;
-    public int souls;
-    public int loss;
+    public float souls;
+    public float loss;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
