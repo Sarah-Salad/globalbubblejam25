@@ -1,92 +1,80 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float normalMoveSpeed;
-    public float dashSpeed;
-    public float dashLength = .5f, dashCooldown = 1f;
-    public float rotationSpeed;
-    private float _dashCounter;
-    private float _dashCooldownCounter;
-    private float _swimSpeed;
-    private Rigidbody2D _rigidbody2d;
-    private Vector2 _moveInput;
-    private Vector2 _moveInputSmoothed;
-    private Vector2 _moveInputVelocity;
-    private bool _isDashing = false;
-    void Start()
-    {
-        _swimSpeed = normalMoveSpeed;
-        _rigidbody2d = GetComponent<Rigidbody2D>();
+    // Derived from the following tutorial https://www.youtube.com/watch?v=DVHcOS1E5OQ
+    public float driftFactor = 0.95f;
+    public float accelerationFactor = 3f;
+    public float turnFactor = 3.5f;
+    public float maxSpeed = 5f;
+
+    private float accelerationInput = 0;
+    private float steeringInput = 0;
+    private float rotationAngle = 0;
+
+    private float velocityVsUp = 0;
+    private Vector2 moveInput;
+
+    private Rigidbody2D rigidBody2D;
+
+    void Awake() {
+        rigidBody2D = this.GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate() 
-    {
-        SetPlayerVelocity();
-        RotatePlayer();
-        if (_isDashing == true)
-        {
-            Dash();
-        }
+    void FixedUpdate() {
+        ApplyEngineForce();
+        
+        DampenOrthogonalVelocity();
+
+        ApplySteering();
     }
 
-
-    private void SetPlayerVelocity()
-    {
-        _moveInputSmoothed = Vector2.SmoothDamp(
-                    _moveInputSmoothed,
-                    _moveInput,
-                    ref _moveInputVelocity,
-                    0.1f);
-
-        _rigidbody2d.linearVelocity = _moveInputSmoothed * _swimSpeed;
-    }
-    private void RotatePlayer()
-    {
-        if (_moveInput != Vector2.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _moveInput);
-            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-            _rigidbody2d.MoveRotation(rotation);
-        }
+    private void OnMove(InputValue inputValue) {
+        moveInput = inputValue.Get<Vector2>();
+        accelerationInput = moveInput.y;
+        steeringInput = moveInput.x;
     }
 
-    private void OnMove(InputValue inputValue)
-    {
-        _moveInput = inputValue.Get<Vector2>();
-    }
+    void ApplyEngineForce() {
+        velocityVsUp = Vector2.Dot(
+            transform.up, rigidBody2D.linearVelocity
+        );
 
-    private void OnSprint(InputValue inputValue)
-    {
-        _isDashing = true;
-    }
-
-    private void Dash()
-    {
-        if (_dashCooldownCounter <= 0 && _dashCounter <= 0)
-        {
-            _swimSpeed = dashSpeed;
-            _dashCounter = dashLength;
+        if (velocityVsUp > maxSpeed && accelerationInput > 0 || accelerationInput < 0) {
+            // don't apply engine force if above max speed or going backwards
+            return;
         }
 
-        if (_dashCounter > 0) 
-        {
-            _dashCounter -= Time.deltaTime;
-
-            if (_dashCounter <= 0)
-            {
-                _swimSpeed = normalMoveSpeed;
-                _dashCooldownCounter = dashCooldown;
-                _isDashing = false;
-            }
+        if (accelerationInput == 0) {
+            rigidBody2D.linearDamping = Mathf.Lerp(rigidBody2D.linearDamping, 3.0f, Time.fixedDeltaTime * 3);
+        }
+        else {
+            rigidBody2D.linearDamping = 0;
         }
 
-        if (_dashCooldownCounter > 0)
-        {
-            _dashCooldownCounter -= Time.deltaTime;
-        }
+        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
+
+        rigidBody2D.AddForce(engineForceVector, ForceMode2D.Force);
+    }
+
+    void ApplySteering() {
+        rotationAngle -= steeringInput * turnFactor;
+
+        rigidBody2D.MoveRotation(rotationAngle);
+    }
+
+    void DampenOrthogonalVelocity() {
+        Vector2 forwardVelocity = transform.up * Vector2.Dot(
+            rigidBody2D.linearVelocity, transform.up
+        );
+
+        Vector2 rightVelocity = transform.right * Vector2.Dot(
+            rigidBody2D.linearVelocity, transform.right
+        );
+
+        rigidBody2D.linearVelocity = forwardVelocity + rightVelocity * driftFactor;
     }
 }
