@@ -12,8 +12,7 @@ position: -218,-523
 ===
 
 title: Dialogue1
-
-position: -298,-208
+position: -257,-208
 ---
 
 Player: Hey, you chose Node 1!
@@ -35,6 +34,39 @@ Water Demon: Do you hate me?
 
 title: Shy
 ---
+<<declare $randomIndexShy = 0>>
+<<set $randomIndexShy to dice(2)>>
+<<if $randomIndexShy == 1>>
+    <<jump Shy1>>
+<<elseif $randomIndex == 2>>
+    <<jump Shy2>>
+<<endif>>
+===
+
+title: Tsundere
+---
+<<declare $randomIndexT = 0>>
+<<set $randomIndexT to dice(2)>>
+<<if $randomIndexT == 1>>
+    <<jump Tsundere1>>
+<<elseif $randomIndexT == 2>>
+    <<jump Tsundere2>>
+<<endif>>
+===
+
+title: Trickster
+---
+<<declare $randomIndexKappa = 0>>
+<<set $randomIndexKappa to dice(2)>>
+<<if $randomIndexKappa == 1>>
+    <<jump Trickster1>>
+<<elseif $randomIndex == 2>>
+    <<jump Trickster2>>
+<<endif>>
+===
+
+title: Shy1
+---
 <<Act Player player left center white>>
 <<Act "Water Demon" waterdemon left center white>>
 Water Demon: Hey, you kind of scare me, what do you want?
@@ -44,7 +76,7 @@ Player: What should I say?
 <<HideAll>>
 ===
 
-title: Tsundere
+title: Tsundere1
 ---
 <<Act Player player left center white>>
 <<Act Tsundere tsundere left center white>>
@@ -55,7 +87,7 @@ Player: What should I say?
 <<HideAll>>
 ===
 
-title: Trickster
+title: Trickster1
 ---
 <<Act Player player left center white>>
 <<Act Kappa kappaboi left center white>>
@@ -63,5 +95,90 @@ Kappa: Hey, you kind of scare me, what do you want?
 Player: What should I say?
 -> Player: I love you
 -> Player: I hate you
+<<HideAll>>
+===
+title: Shy2
+position: -371,-53
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Did you just trap me in a bubble? Why would you do that?
+Player: What should I say?
+-> Player: I was lonely and wanted a friend
+    <<HideAll>>
+    <<jump WaterDemon2_1>>
+-> Player: I thought you were cute and I wanted to talk to you
+    <<HideAll>>
+    <<jump WaterDemon2_2>>
+-> Player: It was an accident, but at least now I get to talk to you!
+    <<HideAll>>
+    <<jump WaterDemon2_3>>
+===
+title: WaterDemon2_1
+position: -379,173
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Hmm, interesting. Do you kidnap all of your friends?
+Player: What should I say?
+-> Player: Yes
+    Water Demon: Ah. Understandable. I've considered doing the same myself.
+-> Player: Only the cute ones
+    Water Demon: Huh? If you say so.
+<<HideAll>>
+===
+
+
+title: WaterDemon2_2
+position: 4,2
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Oh. I guess you're not bad on the eyes yourself.
+Player: What should I say?
+-> Player: So, you wanna join me or what?
+    Water Demon: Okay, sure.
+-> Player: You look like a blueberry, plucked fresh from the ocean.
+    Water Demon: That's a weird thing to say.
+<<HideAll>>
+===
+title: WaterDemon2_3
+position: -6,183
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Hm. You need to work on your aim then.
+Player: What should I say?
+-> Player: This is surely fate. You should stay with me.
+    Water Demon: Okay, I guess so.
+-> Player: I have to be honest, I actually did mean to capture you.
+    Water Demon: Oh. So you lied to me? I don't think I wanna hang out you.
+<<HideAll>>
+===
+title: Tsundere2
+position: 302,55
+---
+<<Act Player player left center white>>
+<<Act Tsundere tsundere left center white>>
+Tsundere: Ugh. You seriously couldn't have at least cleaned yourself up more before talking to your abductee?
+Player: What should I say?
+-> Player: I just didn't want to wait any longer before being with you
+    Tsundere: Fine, I guess I'll come with you. Not because I like you or anything. I just happen to be going in the same direction.
+-> Player: I thought you'd like my natural musk
+    Tsundere: Ew.
+<<HideAll>>
+===
+
+title: Trickster2
+position: 182,82
+---
+<<Act Player player left center white>>
+<<Act Kappa kappaboi left center white>>
+Kappa: I didn't know there were any other demons out here. I was hoping they'd be more friendly than this though.
+Player: What should I say?
+-> Player: I am friendly! I just wanted to make sure you were friendly.
+    Kappa: Ah, this makes total sense. Let's stick together to keep each other safe.
+-> Player: Demon?? That doesn't sound like me. You're the demon here.
+    Kappa: That's Kap. You're untrustworthy.
 <<HideAll>>
 ===
