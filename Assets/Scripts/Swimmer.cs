@@ -31,7 +31,8 @@ public class Swimmer : MonoBehaviour
         if (collider.gameObject.tag == "Bubble") {
             Debug.Log("Okay good it was the bubble");
             spawnTimer();
-            spawnAbducteeAtOpenWaypoint();
+            // Should be handled in Game Manager Script instead
+            //spawnAbducteeAtOpenWaypoint();
             handleAbductedSwimmer();
         }
     }
