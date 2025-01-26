@@ -7,6 +7,8 @@ using UnityEditor;
 public class Timer : MonoBehaviour
 {
     public GameObject sourceSwimmer;
+    public GameObject arrow;
+    public GameObject objectTrackedByArrow;
     public double timerValue;
     RectTransform rTransform;
     float timerWidth;
@@ -17,12 +19,14 @@ public class Timer : MonoBehaviour
     float yPos;
     float lowestYPos;
     private bool isTimerFinished = false;
-    public string swimmerName;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Set up initial value of timer into the TMP Pro text field
         setTimerText();
+
+        // Get arrow
+        arrow = this.transform.GetChild(0).gameObject;
 
         // Set up of vars assuming this timer is at the top right of the screen with the correct offset given the size of the TMP GameObject
         rTransform = this.GetComponent<RectTransform>();
@@ -74,6 +78,15 @@ public class Timer : MonoBehaviour
                 handleFinishedTimer();
                 isTimerFinished = true;
             }
+        }
+        // Track object if it is set
+        if (objectTrackedByArrow != null) {
+            // get vector from player coord to tracked obj coords
+            Vector2 source = GameObject.FindWithTag("Player").transform.position;
+            Vector2 target = objectTrackedByArrow.transform.position;
+            Vector2 dest = target - source;
+
+            arrow.transform.rotation = Quaternion.LookRotation(transform.forward, dest);
         }
     }
     void setTimerText() {
