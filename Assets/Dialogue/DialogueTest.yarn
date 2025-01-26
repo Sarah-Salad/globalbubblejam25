@@ -12,7 +12,7 @@ position: -218,-523
 ===
 
 title: Dialogue1
-position: -257,-208
+position: -536,-389
 ---
 
 Player: Hey, you chose Node 1!
@@ -23,7 +23,7 @@ Water Demon: Do you love me?
 ===
 title: Dialogue2
 
-position: 28,-204
+position: -96,-362
 ---
 Player: Hey, you chose Node 2!
 Water Demon: Do you hate me?
@@ -31,8 +31,14 @@ Water Demon: Do you hate me?
 -> Player: No
 <<HideAll>>
 ===
+title: Start
+position: -248,-129
+---
+<<declare $Souls = 0>>
+===
 
 title: Shy
+position: -311,-358
 ---
 <<declare $randomIndexShy = 0>>
 <<set $randomIndexShy to dice(2)>>
@@ -44,6 +50,7 @@ title: Shy
 ===
 
 title: Tsundere
+position: -28,-78
 ---
 <<declare $randomIndexT = 0>>
 <<set $randomIndexT to dice(2)>>
@@ -55,6 +62,7 @@ title: Tsundere
 ===
 
 title: Trickster
+position: -7,534
 ---
 <<declare $randomIndexKappa = 0>>
 <<set $randomIndexKappa to dice(2)>>
@@ -66,39 +74,45 @@ title: Trickster
 ===
 
 title: Shy1
+position: -207,405
 ---
 <<Act Player player left center white>>
 <<Act "Water Demon" waterdemon left center white>>
 Water Demon: Hey, you kind of scare me, what do you want?
 Player: What should I say?
 -> Player: I love you
+    <<set $Souls = $Souls + 1>>
 -> Player: I hate you
 <<HideAll>>
 ===
 
 title: Tsundere1
+position: 214,-196
 ---
 <<Act Player player left center white>>
 <<Act Tsundere tsundere left center white>>
 Tsundere: Hey, you kind of scare me, what do you want?
 Player: What should I say?
 -> Player: I love you
+    <<set $Souls = $Souls + 1>>
 -> Player: I hate you
 <<HideAll>>
 ===
 
 title: Trickster1
+position: -158,-189
 ---
 <<Act Player player left center white>>
 <<Act Kappa kappaboi left center white>>
 Kappa: Hey, you kind of scare me, what do you want?
 Player: What should I say?
 -> Player: I love you
+    <<set $Souls = $Souls + 1>>
 -> Player: I hate you
 <<HideAll>>
 ===
 title: Shy2
-position: -371,-53
+position: -522,-114
 ---
 <<Act Player player left center white>>
 <<Act "Water Demon" waterdemon left center white>>
@@ -123,14 +137,16 @@ Water Demon: Hmm, interesting. Do you kidnap all of your friends?
 Player: What should I say?
 -> Player: Yes
     Water Demon: Ah. Understandable. I've considered doing the same myself.
+    <<set $Souls = $Souls + 1>>
 -> Player: Only the cute ones
     Water Demon: Huh? If you say so.
+    <<set $Souls = $Souls + 1>>
 <<HideAll>>
 ===
 
 
 title: WaterDemon2_2
-position: 4,2
+position: -196,41
 ---
 <<Act Player player left center white>>
 <<Act "Water Demon" waterdemon left center white>>
@@ -138,6 +154,7 @@ Water Demon: Oh. I guess you're not bad on the eyes yourself.
 Player: What should I say?
 -> Player: So, you wanna join me or what?
     Water Demon: Okay, sure.
+    <<set $Souls = $Souls + 1>>
 -> Player: You look like a blueberry, plucked fresh from the ocean.
     Water Demon: That's a weird thing to say.
 <<HideAll>>
@@ -151,6 +168,7 @@ Water Demon: Hm. You need to work on your aim then.
 Player: What should I say?
 -> Player: This is surely fate. You should stay with me.
     Water Demon: Okay, I guess so.
+    <<set $Souls = $Souls + 1>>
 -> Player: I have to be honest, I actually did mean to capture you.
     Water Demon: Oh. So you lied to me? I don't think I wanna hang out you.
 <<HideAll>>
@@ -164,6 +182,7 @@ Tsundere: Ugh. You seriously couldn't have at least cleaned yourself up more bef
 Player: What should I say?
 -> Player: I just didn't want to wait any longer before being with you
     Tsundere: Fine, I guess I'll come with you. Not because I like you or anything. I just happen to be going in the same direction.
+    <<set $Souls = $Souls + 1>>
 -> Player: I thought you'd like my natural musk
     Tsundere: Ew.
 <<HideAll>>
@@ -178,6 +197,7 @@ Kappa: I didn't know there were any other demons out here. I was hoping they'd b
 Player: What should I say?
 -> Player: I am friendly! I just wanted to make sure you were friendly.
     Kappa: Ah, this makes total sense. Let's stick together to keep each other safe.
+    <<set $Souls = $Souls + 1>>
 -> Player: Demon?? That doesn't sound like me. You're the demon here.
     Kappa: That's Kap. You're untrustworthy.
 <<HideAll>>
