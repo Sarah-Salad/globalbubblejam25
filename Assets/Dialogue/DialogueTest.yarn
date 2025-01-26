@@ -1,0 +1,67 @@
+﻿title: DialogueTest
+
+position: -218,-523
+---
+<<declare $randomIndex = 0>>
+<<set $randomIndex to dice(2)>>
+<<if $randomIndex == 1>>
+    <<jump Dialogue1>>
+<<elseif $randomIndex == 2>>
+    <<jump Dialogue2>>
+<<endif>>
+===
+
+title: Dialogue1
+
+position: -298,-208
+---
+
+Player: Hey, you chose Node 1!
+Water Demon: Do you love me?
+-> Player: Yes
+-> Player: No 
+<<HideAll>>
+===
+title: Dialogue2
+
+position: 28,-204
+---
+Player: Hey, you chose Node 2!
+Water Demon: Do you hate me?
+-> Player: Yes
+-> Player: No
+<<HideAll>>
+===
+
+title: Shy
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Hey, you kind of scare me, what do you want?
+Player: What should I say?
+-> Player: I love you
+-> Player: I hate you
+<<HideAll>>
+===
+
+title: Tsundere
+---
+<<Act Player player left center white>>
+<<Act Tsundere tsundere left center white>>
+Tsundere: Hey, you kind of scare me, what do you want?
+Player: What should I say?
+-> Player: I love you
+-> Player: I hate you
+<<HideAll>>
+===
+
+title: Trickster
+---
+<<Act Player player left center white>>
+<<Act Kappa kappaboi left center white>>
+Kappa: Hey, you kind of scare me, what do you want?
+Player: What should I say?
+-> Player: I love you
+-> Player: I hate you
+<<HideAll>>
+===

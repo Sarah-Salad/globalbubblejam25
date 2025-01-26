@@ -6,6 +6,9 @@ using System.Drawing.Drawing2D;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static readonly int Moving = Animator.StringToHash("Moving");
+    private Animator _animator;
+
     // Derived from the following tutorial https://www.youtube.com/watch?v=DVHcOS1E5OQ
     public float driftFactor = 0.95f;
     public float accelerationFactor = 3f;
@@ -36,12 +39,18 @@ public class PlayerMovement : MonoBehaviour
         originalMaxSpeed = maxSpeed;
     }
 
+    void Start() {
+        _animator = GetComponent<Animator>();
+    }
+
     void FixedUpdate() {
         ApplyEngineForce();
         
         DampenOrthogonalVelocity();
 
         ApplySteering();
+
+        _animator.SetBool(Moving, rigidBody2D.linearVelocity.magnitude > .1f);
     }
 
     private void OnMove(InputValue inputValue) {

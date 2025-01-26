@@ -16,7 +16,8 @@ public class Timer : MonoBehaviour
     float xPos;
     float yPos;
     float lowestYPos;
-    bool isTimerFinished = false;
+    private bool isTimerFinished = false;
+    public string swimmerName;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -90,5 +91,7 @@ public class Timer : MonoBehaviour
 
     void handleFinishedTimer() {
         Debug.Log("Timer hit 0");
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.RemoveAbductee(swimmerName);
     }
 }
