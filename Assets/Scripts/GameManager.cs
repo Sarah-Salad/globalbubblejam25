@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     public bool inMall;
     private bool _doneInitialLoad;
     private List<Abductee> _abductees;
+
+    private bool hasDived;
     
     public GameObject abducteePrefab;
 
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         inMall = false;
+        hasDived = false;
         _abductees = new List<Abductee>();
         TransitionToSurface();
         _doneInitialLoad = true;
@@ -76,6 +79,12 @@ public class GameManager : MonoBehaviour
 
         _abductees.Add(new Abductee(swimmer, timer));
         Debug.Log($"Queued abductee to spawn in mall");
+
+        // Don't show the help text if the player has already dived under the water once before
+        if (!hasDived)
+        {
+            GetComponent<HelpTextManager>().ShowHelpText();
+        }
     }
 
     public void RemoveAbducteeViaTimer(GameObject myTimer) {
@@ -116,6 +125,7 @@ public class GameManager : MonoBehaviour
     
     public void TransitionToMall()
     {
+        GetComponent<HelpTextManager>().HideHelpText();
         SceneManager.UnloadSceneAsync(surfaceSceneIndex);
         SceneManager.LoadSceneAsync(mallSceneIndex, LoadSceneMode.Additive).GetAwaiter().OnCompleted(() =>
         {
@@ -125,6 +135,7 @@ public class GameManager : MonoBehaviour
             }
             
             inMall = true;
+            hasDived = true;
         });
     }
 
