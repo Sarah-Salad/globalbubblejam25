@@ -1,13 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using Yarn.Unity;
 
 public class InteractableObject: MonoBehaviour, IInteractable
 {
-    [SerializeField] private string conversationStartNode;
     [SerializeField] private UnityEvent _stopInteract;
     [SerializeField] private UnityEvent _onInteract;
-    [SerializeField]private DialogueRunner dialogueRunner;
+    [SerializeField] private DialogueRunner dialogueRunner;
+    private AbducteePersonality abducteePersonality;
     private bool interactable = true;
     private bool isCurrentConversation = false;
 
@@ -20,15 +21,14 @@ public class InteractableObject: MonoBehaviour, IInteractable
     private void Start()
     {
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
+        abducteePersonality = GetComponent<AbducteePersonality>();
     }
     private void StartConversation()
     {
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
-        // if (lightIndicatorObject != null) {
-        //     lightIndicatorObject.intensity = defaultIndicatorIntensity;
-        // }
         _onInteract.Invoke();
+        dialogueRunner.StartDialogue(abducteePersonality.GetPersonalityType());
     }
 
     private void EndConversation()
