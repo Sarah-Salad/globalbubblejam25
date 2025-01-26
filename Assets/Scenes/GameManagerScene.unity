@@ -155,6 +155,14 @@ MonoBehaviour:
   loseSceneIndex: 6
   inMall: 0
   abducteePrefab: {fileID: 865018384215404664, guid: 3c1700c7cb7c743d59745eed765ea8e9, type: 3}
+  abducteeAnimations:
+  - {fileID: 9100000, guid: 93356a762f3077ba298bfa0d0d8a4b01, type: 2}
+  - {fileID: 9100000, guid: 4f92aa276658727f1b5ba3f633e05c28, type: 2}
+  - {fileID: 9100000, guid: ce779ea52f103e9e8b0a188463f2fdb4, type: 2}
+  abducteeSprites:
+  - {fileID: -4516076974445879511, guid: f6be4dd717b684be2ba0f560f17a030b, type: 3}
+  - {fileID: -7608670378147432239, guid: 725a33945af5c4f6d9518d15530912e7, type: 3}
+  - {fileID: -7808561340321354122, guid: 5b9c6dd2495af463cac5526cf5e80cbd, type: 3}
 --- !u!4 &1165480428
 Transform:
   m_ObjectHideFlags: 0
