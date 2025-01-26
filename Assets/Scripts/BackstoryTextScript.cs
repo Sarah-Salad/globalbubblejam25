@@ -39,6 +39,7 @@ public class BackstoryTextScript : MonoBehaviour
 
     void Update()
     {
+        //TODO: This should use the input system
         if (Input.GetButtonDown("Submit"))
         {
             if (showing && count + 1 == textlist.Length) {
