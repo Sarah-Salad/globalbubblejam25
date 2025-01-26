@@ -15,7 +15,7 @@ public class GameState : MonoBehaviour
     }
     void Update()
     {
-        if (souls >= 9)
+        if (souls >= 5)
         {
             gameObject.GetComponent<GameManager>().TransitionToWinScene();
         } else if (loss >= 3) 

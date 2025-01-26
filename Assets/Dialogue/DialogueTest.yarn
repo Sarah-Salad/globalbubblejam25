@@ -43,11 +43,13 @@ title: Shy
 position: -311,-358
 ---
 <<declare $randomIndexShy = 0>>
-<<set $randomIndexShy to dice(2)>>
+<<set $randomIndexShy to dice(3)>>
 <<if $randomIndexShy == 1>>
-    <<jump Shy1>>
-<<elseif $randomIndex == 2>>
     <<jump Shy2>>
+<<elseif $randomIndex == 2>>
+    <<jump WaterDemon3>>
+<<elseif $randomIndex == 3>>
+    <<jump WaterDemon4>>
 <<endif>>
 ===
 
@@ -55,11 +57,13 @@ title: Tsundere
 position: -28,-78
 ---
 <<declare $randomIndexT = 0>>
-<<set $randomIndexT to dice(2)>>
+<<set $randomIndexT to dice(3)>>
 <<if $randomIndexT == 1>>
-    <<jump Tsundere1>>
+    <<jump Tsundere3>>
 <<elseif $randomIndexT == 2>>
     <<jump Tsundere2>>
+<<elseif $randomIndexT == 3>>
+    <<jump Tsundere4>>
 <<endif>>
 ===
 
@@ -67,11 +71,13 @@ title: Trickster
 position: -7,534
 ---
 <<declare $randomIndexKappa = 0>>
-<<set $randomIndexKappa to dice(2)>>
+<<set $randomIndexKappa to dice(3)>>
 <<if $randomIndexKappa == 1>>
-    <<jump Trickster1>>
+    <<jump Trickster3>>
 <<elseif $randomIndex == 2>>
     <<jump Trickster2>>
+<<elseif $randomIndex == 3>>
+    <<jump Trickster4>>
 <<endif>>
 ===
 
@@ -149,6 +155,35 @@ Player: What should I say?
 <<HideAll>>
 ===
 
+title: WaterDemon3
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Nice place you got here. Is this a housewarming party?
+Player: What should I say?
+-> Player: That's right. Invitation is via bubble only.
+    Water Demon: Makes sense. I guess I'll stick around.
+    <<set $Souls = $Souls + 1>>
+-> Player: Actually, I'm trying to capture people to be my friends.
+    Water Demon: Huh? You should really rethink your life choices. I don't want to be friends with someone that bubbled me.
+    <<set $Loss = $Loss + 1>>
+<<HideAll>>
+===
+
+title: WaterDemon4
+---
+<<Act Player player left center white>>
+<<Act "Water Demon" waterdemon left center white>>
+Water Demon: Kidnapping people with bubbles is rude.
+Player: What should I say?
+-> Player: I just wanted to be friends.
+    Water Demon: Oh. You know, I'm pretty loneley too. I guess I'll stick around.
+    <<set $Souls = $Souls + 1>>
+-> Player: Well, you can leave if you want. You just looked like someone who would like bubbles.
+    Water Demon: Yeah, I'm leaving.
+    <<set $Loss = $Loss + 1>>
+<<HideAll>>
+===
 
 title: WaterDemon2_2
 position: -196,41
@@ -196,6 +231,36 @@ Player: What should I say?
 <<HideAll>>
 ===
 
+
+title: Tsundere3
+---
+<<Act Player player left center white>>
+<<Act Tsundere tsundere left center white>>
+Tsundere: I can't believe I got bubble abducted today.
+Player: What should I say?
+-> Player: I thought you were cute.
+    Tsundere: Well, that's true. I guess I'll stick around. Not because you're cute or anything.
+    <<set $Souls = $Souls + 1>>
+-> Player: I wanted to show you my cool bubble.
+    Tsundere: Bubbles are lame. I'm leaving.
+    <<set $Loss = $Loss + 1>>
+<<HideAll>>
+===
+
+title: Tsundere4
+---
+<<Act Player player left center white>>
+<<Act Tsundere tsundere left center white>>
+Tsundere: This bubble is gross.
+Player: What should I say?
+-> Player: I am also gross. But you're cute.
+    Tsundere: At least you got that right. I guess I'll stick around. Not because you're cute or anything.
+    <<set $Souls = $Souls + 1>>
+-> Player: My bubble is epic.
+    Tsundere: Well, I guess yours aren't bad. I'll stay. Not because I like bubbles or anything.
+    <<set $Souls = $Souls + 1>>
+<<HideAll>>
+===
 title: Trickster2
 position: 182,82
 ---
@@ -208,6 +273,39 @@ Player: What should I say?
     <<set $Souls = $Souls + 1>>
 -> Player: Demon?? That doesn't sound like me. You're the demon here.
     Kappa: That's Kap. You're untrustworthy.
+    <<set $Loss = $Loss + 1>>
+<<HideAll>>
+===
+
+title: Trickster3
+---
+<<Act Player player left center white>>
+<<Act Kappa kappaboi left center white>>
+Kappa: Why did you trap me in a bubble? You don't seem very friendly.
+Player: What should I say?
+-> Player: I am friendly! I just wanted to be friends.
+    Kappa: Ah, this makes total sense. Let's stick together.
+    <<set $Souls = $Souls + 1>>
+-> Player: I wanted to show off my cool bubbles.
+    Kappa: I guess they are pretty cool. I've never seen bubbles like this before.
+    <<set $Souls = $Souls + 1>>
+-> Player: You seemed suspicious
+    Kappa: Suspicious?? I think that's you. I'm outta here.
+    <<set $Loss = $Loss + 1>>
+<<HideAll>>
+===
+
+title: Trickster4
+---
+<<Act Player player left center white>>
+<<Act Kappa kappaboi left center white>>
+Kappa: Is this your house?
+Player: What should I say?
+-> Player: I guess it is now. Do you wanna stay for bubbles?
+    Kappa: Okay, I guess it can't hurt.
+    <<set $Souls = $Souls + 1>>
+-> Player: No, this is my bubble chamber.
+    Kappa: Oh. That sounds really suspicious. I'm gonna leave.
     <<set $Loss = $Loss + 1>>
 <<HideAll>>
 ===
