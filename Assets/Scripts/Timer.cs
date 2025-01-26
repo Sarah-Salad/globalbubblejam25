@@ -56,6 +56,9 @@ public class Timer : MonoBehaviour
             Vector2 dest = new Vector2(xPos, lowestYPos - timerHeight);
             rTransform.anchoredPosition = dest;
         }
+
+        // Set scale to (1, 1, 1) manually because it's getting altered somewhere
+        this.rTransform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     // Update is called once per frame

@@ -44,7 +44,7 @@ public class BackstoryTextScript : MonoBehaviour
         {
             if (showing && count + 1 == textlist.Length) {
                 count++;
-                SceneManager.LoadScene("MainScene");
+                SceneManager.LoadScene("GameManagerScene");
             }
             else if (showing) {
                 showing = false;
